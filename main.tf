@@ -1,24 +1,24 @@
 resource "azurerm_resource_group" "main" {
-  name     = "ttp1"
+  name     = "ttp12"
   location = "WestUS"
 }
 
 resource "azurerm_virtual_network" "main" {
-  name                = "vnet12"
+  name                = "vnet123"
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
 }
 
 resource "azurerm_subnet" "internal" {
-  name                 = "sub1"
+  name                 = "sub12"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
   address_prefix       = "10.0.2.0/24"
 }
 
 resource "azurerm_network_interface" "main" {
-  name                = "nic1"
+  name                = "nic12"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
 
@@ -30,7 +30,7 @@ resource "azurerm_network_interface" "main" {
 }
 
 resource "azurerm_virtual_machine" "main" {
-  name                  = "Vm1"
+  name                  = "Vm12"
   location              = azurerm_resource_group.main.location
   resource_group_name   = azurerm_resource_group.main.name
   network_interface_ids = [azurerm_network_interface.main.id]
